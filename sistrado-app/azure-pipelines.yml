@@ -22,37 +22,25 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
-- task: Npm@1  
-  displayName: 'Angular CLI'  
-  inputs:  
-    command: custom  
-    verbose: false  
-    customCommand: 'install @angular/cli@11.0.7' 
-- task: Npm@1  
-  displayName: 'npm install'  
-  inputs:  
-    verbose: false 
+  displayName: 'Install Node.js'
 
-- task: Npm@1  
-  workingDirectory: $(working-dir)
-  displayName: Build  
-  inputs:  
-    command: custom  
-    verbose: false  
-    customCommand: 'run build' 
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
 
-- task: CopyPublishBuildArtifacts@1  
-  workingDirectory: $(working-dir)
+- task: CopyPublishBuildArtifacts@1
   inputs:  
-    CopyRoot: dist  
+    CopyRoot: $(working-dir)/dist  
     Contents: '**'  
     ArtifactName: app  
     ArtifactType: Container  
   
 - task: DownloadPipelineArtifact@2  
-  workingDirectory: $(working-dir)
   inputs:  
     targetPath: ' $(Build.ArtifactStagingDirectory)/dist/app'  
