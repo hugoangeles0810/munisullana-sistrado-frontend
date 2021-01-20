@@ -33,6 +33,7 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+  workingDirectory: $(working-dir)
 
 - task: CopyPublishBuildArtifacts@1
   inputs:  
