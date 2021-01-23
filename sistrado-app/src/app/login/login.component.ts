@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { of, Subject } from 'rxjs';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { LoginService } from '../login.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,31 +13,47 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  email: string = "";
-  password: string = "";
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
+  });
 
-  isLoading$ = new Subject<boolean>();
+  authError$ = new BehaviorSubject<string>("");
 
-  constructor(private loginService: LoginService) { }
+  isLoading$ = new BehaviorSubject<boolean>(false);
+
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoading$.next(false);
+    if (this.authService.isLoginIn()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   login() {
+    this.authError$.next("");
     this.isLoading$.next(true);
-    this.loginService
-      .login({email: this.email, password: this.password})
-      .pipe(
-        tap((result) => {
+    this.authService
+      .login({email: this.form.get('email').value, password: this.form.get('password').value})
+      .subscribe(
+        (account) => { 
           this.isLoading$.next(false);
-        })
-      )
-      .subscribe({
-        next(account) { console.log(account);},
-        error(err) { console.error(err);},
-        complete() { console.log('done');}
-      });
+          this.router.navigate(['/home']);
+        },
+        (err) => {
+          this.isLoading$.next(false);
+          this.authError$.next(err.error.message);
+        }
+      );
+  }
+
+  getErrorMessage() {
+    if (this.form.get('email').hasError('email')) {
+      return 'No es un correo válido';
+    }
+
+    return 'Debe ingresar este campo';
   }
 
 }
