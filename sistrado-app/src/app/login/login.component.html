@@ -1,6 +1,6 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
-    <mat-card class="box">
+    <mat-card class="box my-5">
       <mat-card-header>
         <mat-card-title>Iniciar sesión </mat-card-title>
       </mat-card-header>
@@ -31,9 +31,12 @@
                 <mat-error *ngIf="form.get('password').invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
         </mat-card-content>
+
         <button mat-stroked-button color="accent" class="btn-block" [disabled]="!form.valid" *ngIf="!(isLoading$ | async)" >Ingresar</button>
 
         <mat-progress-spinner mode="indeterminate" diameter="35" style="margin:8px auto;" *ngIf="isLoading$ | async"></mat-progress-spinner>
+
+        <a routerLink="/registro" class="mt-4" fxLayout="row" fxLayoutAlign="center">Crear cuenta</a>
       </form>
     </mat-card>
   

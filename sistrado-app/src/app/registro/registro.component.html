@@ -1,0 +1,156 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box my-5">
+      <mat-card-header>
+        <mat-card-title>Registro de usuario</mat-card-title>
+      </mat-card-header>
+
+      <span class="mat-error my-2" *ngIf="registroError$ | async">{{registroError$ | async}}</span>
+  
+      <form class="example-form" [formGroup]="form" (submit)="registro()" >
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="Nombre"
+                    type="text"
+                    name="nombre"
+                    formControlName="nombre"
+                    required>
+                <mat-error *ngIf="form.get('nombre').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="Apellido Paterno"
+                    type="text"
+                    name="apePaterno"
+                    formControlName="apePaterno"
+                    required>
+                <mat-error *ngIf="form.get('apePaterno').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="Apellido Materno"
+                    type="text"
+                    name="apeMaterno"
+                    formControlName="apeMaterno"
+                    required>
+                <mat-error *ngIf="form.get('apeMaterno').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="Celular"
+                    type="tel"
+                    name="celular"
+                    formControlName="celular"
+                    required>
+                <mat-error *ngIf="form.get('celular').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="DNI"
+                    type="text"
+                    name="dni"
+                    maxlength="8"
+                    formControlName="dni"
+                    required>
+                <mat-error *ngIf="form.get('dni').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="E-mail"
+                    type="email"
+                    name="email"
+                    formControlName="email"
+                    required>
+                    <mat-error *ngIf="form.get('email').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input 
+                matInput 
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Contraseña"
+                name="password"
+                formControlName="password"
+                required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="form.get('password').invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Departamento</mat-label>
+                <mat-select>
+                    <mat-option value="Lima">Lima</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Provincia</mat-label>
+                <mat-select>
+                    <mat-option value="Lima">Lima</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Distrito</mat-label>
+                <mat-select>
+                    <mat-option value="Lima">Lima</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input 
+                    matInput 
+                    placeholder="Dirección"
+                    type="text"
+                    name="direccion"
+                    formControlName="direccion"
+                    required>
+                <mat-error *ngIf="form.get('direccion').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+        <mat-checkbox formControlName="representante">Soy representante</mat-checkbox>
+
+        <mat-form-field *ngIf="form.get('representante').value" class="example-full-width">
+            <input 
+                matInput 
+                placeholder="RUC"
+                type="text"
+                name="ruc"
+                maxlength="11"
+                formControlName="ruc">
+            <mat-error *ngIf="form.get('ruc').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="form.get('representante').value" class="example-full-width">
+            <input 
+                matInput 
+                placeholder="Dirección fiscal"
+                type="text"
+                name="dirFiscal"
+                formControlName="dirFiscal">
+            <mat-error *ngIf="form.get('dirFiscal').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+          
+        </mat-card-content>
+
+        <button mat-stroked-button color="accent" class="btn-block"  *ngIf="!(isLoading$ | async)" >Ingresar</button>
+
+        <mat-progress-spinner mode="indeterminate" diameter="35" style="margin:8px auto;" *ngIf="isLoading$ | async"></mat-progress-spinner>
+
+        <a routerLink="/login" class="mt-4" fxLayout="row" fxLayoutAlign="center">Iniciar sesión</a>
+      </form>
+    </mat-card>
+  
+  </div>
