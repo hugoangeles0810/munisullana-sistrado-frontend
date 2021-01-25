@@ -4,9 +4,7 @@
       <mat-card-header>
         <mat-card-title>Registro de usuario</mat-card-title>
       </mat-card-header>
-
-      <span class="mat-error my-2" *ngIf="registroError$ | async">{{registroError$ | async}}</span>
-  
+      
       <form class="example-form" [formGroup]="form" (submit)="registro()" >
         <mat-card-content>
             <mat-form-field class="example-full-width">
@@ -90,21 +88,21 @@
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Departamento</mat-label>
-                <mat-select>
+                <mat-select (selectionChange)="onSelectChanged('departamento', $event)">
                     <mat-option value="Lima">Lima</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Provincia</mat-label>
-                <mat-select>
+                <mat-select (selectionChange)="onSelectChanged('provincia', $event)">
                     <mat-option value="Lima">Lima</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Distrito</mat-label>
-                <mat-select>
+                <mat-select (selectionChange)="onSelectChanged('distrito', $event)">
                     <mat-option value="Lima">Lima</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -145,7 +143,7 @@
           
         </mat-card-content>
 
-        <button mat-stroked-button color="accent" class="btn-block"  *ngIf="!(isLoading$ | async)" >Ingresar</button>
+        <button mat-stroked-button color="accent" class="btn-block" [disabled]="!form.valid"  *ngIf="!(isLoading$ | async)" >Crear cuenta</button>
 
         <mat-progress-spinner mode="indeterminate" diameter="35" style="margin:8px auto;" *ngIf="isLoading$ | async"></mat-progress-spinner>
 

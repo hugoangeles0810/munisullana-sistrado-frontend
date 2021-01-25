@@ -12,13 +12,17 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegistroComponent } from './registro/registro.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { ActivacionComponent } from './activacion/activacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegistroComponent
+    RegistroComponent,
+    AlertDialogComponent,
+    ActivacionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../auth.service';
+
+import { RegistroRequest } from '../model/request/registro-request';
+import { AlertDialogService } from '../alert-dialog.service';
 
 @Component({
   selector: 'app-registro',
@@ -30,21 +34,21 @@ export class RegistroComponent implements OnInit {
 
   hide = true;
 
-  registroError$ = new BehaviorSubject<string>("");
-
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private alertService: AlertDialogService) { }
 
   ngOnInit(): void {
     if (this.authService.isLoginIn()) {
       this.router.navigate(['/home']);
     }
+
   }
 
   registro() {
-    let request =  {
+    let request: RegistroRequest =  {
       nombres: this.form.get('nombre').value,
       apePaterno: this.form.get('apePaterno').value,
       apeMaterno: this.form.get('apeMaterno').value,
@@ -57,11 +61,25 @@ export class RegistroComponent implements OnInit {
       provincia: this.form.get('provincia').value,
       distrito: this.form.get('distrito').value,
       representante: this.form.get('representante').value,
-      ruc: this.form.get('ruc').value,
-      dirFiscal: this.form.get('dirFiscal').value
+      ruc: this.form.get('representante').value ? this.form.get('ruc').value : null,
+      dirFiscal: this.form.get('representante').value ? this.form.get('dirFiscal').value : null
     }
 
-    console.log(request);
+    this.isLoading$.next(true);
+
+    this.authService.registro(request)
+      .subscribe(
+        (account) => { 
+          this.isLoading$.next(false);
+          this.alertService.showAlert('Mensaje', 'Usuario registrado con éxito, active su cuenta desde el link enviado a su correo.', () => {
+            this.router.navigate(['/login']);
+          });
+        },
+        (err) => {
+          this.isLoading$.next(false);
+          this.alertService.showAlert("Error", err.error.message ? err.error.message : 'Ocurrió un error intentar registrar su cuenta');
+        }
+      );
   }
 
   getErrorMessage() {
@@ -70,6 +88,10 @@ export class RegistroComponent implements OnInit {
     }
 
     return 'Debe ingresar este campo';
+  }
+
+  onSelectChanged(control, $event) {
+    this.form.get(control).patchValue($event.value);
   }
 
 }

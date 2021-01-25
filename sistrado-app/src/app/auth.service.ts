@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Account } from './model/account';
 import { LoginRequest } from './model/request/login-request';
 import { environment } from 'src/environments/environment';
+import { RegistroRequest } from './model/request/registro-request';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,16 @@ export class AuthService {
   };
 
   constructor(private http: HttpClient) { }
+
+  registro(registroRequest: RegistroRequest): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/webapp/api/v1/ciudadano/registro`, registroRequest)
+      .pipe();
+  }
+
+  verificar(token): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/webapp/api/v1/ciudadano/verificar/${token}`)
+      .pipe();
+  }
 
   login(loginRequest: LoginRequest): Observable<Account> {
     return this.http.post<Account>(`${environment.apiUrl}/webapp/api/v1/ciudadano/login`, loginRequest)
