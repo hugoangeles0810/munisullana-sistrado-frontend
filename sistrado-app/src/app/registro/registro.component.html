@@ -1,9 +1,11 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box my-5">
-      <mat-card-header>
-        <mat-card-title>Registro de usuario</mat-card-title>
-      </mat-card-header>
+        <img mat-card-image src="assets/img/logo-muni.png" />
+        <mat-card-header>
+            <mat-card-title>Sistema de trámite virtual y atención al ciudadano</mat-card-title>
+            <mat-card-subtitle class="mt-4">Creación de usuario</mat-card-subtitle>
+          </mat-card-header>
       
       <form class="example-form" [formGroup]="form" (submit)="registro()" >
         <mat-card-content>
