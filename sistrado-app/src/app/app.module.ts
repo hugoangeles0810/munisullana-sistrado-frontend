@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegistroComponent } from './registro/registro.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { ActivacionComponent } from './activacion/activacion.component';
+import { MyProceduresComponent } from './my-procedures/my-procedures.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ActivacionComponent } from './activacion/activacion.component';
     HomeComponent,
     RegistroComponent,
     AlertDialogComponent,
-    ActivacionComponent
+    ActivacionComponent,
+    MyProceduresComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
