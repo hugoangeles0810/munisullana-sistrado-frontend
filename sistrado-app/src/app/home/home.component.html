@@ -1,17 +1,14 @@
 <mat-toolbar>
     <span>Sistema de trámite virtual</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Cerrar sesión" (click)="logout()">
-        Cerrar sesión
+    <button mat-button>Mis trámites</button>
+    <button mat-button>Nuevo trámite</button>
+    <span class="example-spacer"></span>
+    <span>Ciudadano: 47398154</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" matTooltip="Cerrar sesión" (click)="logout()">
         <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>
 
-<div>
-    <div class="form-group">
-        <label for="file">Choose File</label>
-        <input type="file"
-               id="file"
-               (change)="handleFileInput($event.target.files)">
-    </div>
-</div>
+<router-outlet></router-outlet>
