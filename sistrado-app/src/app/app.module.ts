@@ -16,6 +16,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { ActivacionComponent } from './activacion/activacion.component';
 import { MyProceduresComponent } from './my-procedures/my-procedures.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AlertDialogComponent,
     ActivacionComponent,
     MyProceduresComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    NewProcedureComponent
   ],
   imports: [
     BrowserModule,
