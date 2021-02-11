@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "sistrado-app"
+  "defaultProject": "sistrado-app",
+  "cli": {
+    "analytics": "35b08ae2-7fb3-46e7-9cb8-80eef1b0af50"
+  }
 }

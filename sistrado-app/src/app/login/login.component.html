@@ -1,6 +1,6 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
-    <mat-card class="box my-5">
+    <mat-card class="box my-4">
       <img mat-card-image src="assets/img/logo-muni.png" />
       <mat-card-header>
         <mat-card-title>Sistema de trámite virtual y atención al ciudadano</mat-card-title>
@@ -34,12 +34,20 @@
           </mat-form-field>
         </mat-card-content>
 
-        <button mat-stroked-button color="accent" class="btn-block" [disabled]="!form.valid" *ngIf="!(isLoading$ | async)" >Ingresar</button>
+        <button mat-stroked-button color="accent" class="btn-block" [disabled]="!form.valid" *ngIf="!(isLoading$ | async)" >Iniciar Sesión</button>
 
         <mat-progress-spinner mode="indeterminate" diameter="35" style="margin:8px auto;" *ngIf="isLoading$ | async"></mat-progress-spinner>
-
-        <a routerLink="/registro" class="mt-4" fxLayout="row" fxLayoutAlign="center">Quiero registrarme</a>
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>
+            <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">Olvidé mi contraseña</a>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">Quiero registrarme</a>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">No recibí el correo de confirmación</a>
       </form>
     </mat-card>
   
   </div>
+  <app-copyright></app-copyright>

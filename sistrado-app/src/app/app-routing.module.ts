@@ -9,7 +9,6 @@ import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 import { RegistroComponent } from './registro/registro.component';
 
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
