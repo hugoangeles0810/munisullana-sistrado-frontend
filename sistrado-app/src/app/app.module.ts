@@ -18,6 +18,8 @@ import { MyProceduresComponent } from './my-procedures/my-procedures.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 import {CopyrightComponent} from './copyright/copyright.component';
+import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
+import {ResendConfirmationComponent} from './resend-confirmation/resend-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {CopyrightComponent} from './copyright/copyright.component';
     MyProceduresComponent,
     ToolbarComponent,
     NewProcedureComponent,
-    CopyrightComponent
+    CopyrightComponent,
+    RecoveryPasswordComponent,
+    ResendConfirmationComponent
   ],
   imports: [
     BrowserModule,

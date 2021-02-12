@@ -39,13 +39,13 @@
         <mat-progress-spinner mode="indeterminate" diameter="35" style="margin:8px auto;" *ngIf="isLoading$ | async"></mat-progress-spinner>
         <mat-grid-list cols="2" rowHeight="2:1">
           <mat-grid-tile>
-            <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">Olvidé mi contraseña</a>
+            <a routerLink="/recuperar-contrasena" fxLayout="row" fxLayoutAlign="center">Olvidé mi contraseña</a>
           </mat-grid-tile>
           <mat-grid-tile>
             <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">Quiero registrarme</a>
           </mat-grid-tile>
         </mat-grid-list>
-        <a routerLink="/registro" fxLayout="row" fxLayoutAlign="center">No recibí el correo de confirmación</a>
+        <a routerLink="/resend-confirmation" fxLayout="row" fxLayoutAlign="center">No recibí el correo de confirmación</a>
       </form>
     </mat-card>
   

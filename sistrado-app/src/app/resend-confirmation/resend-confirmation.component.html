@@ -1,0 +1,19 @@
+<div class="resend-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box my-4">
+        <img mat-card-image src="assets/img/logo-muni.png" />
+      <mat-card-header>
+        <mat-card-title>Sistema de trámite virtual y atención al ciudadano</mat-card-title>
+        <mat-card-subtitle class="mt-4">Validar Email</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ingrese aquí su correo electrónico</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+          </mat-form-field>
+          <a routerLink="/login" class="btn btn-success" fxLayout="row" fxLayoutAlign="center">Enviar</a>
+      </mat-card-content>
+      <a routerLink="/login" class="" fxLayout="row" fxLayoutAlign="center">Iniciar Sesión</a>
+    </mat-card>
+</div>
+<app-copyright></app-copyright>
