@@ -1,12 +1,43 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
     <span>Sistema de trámite virtual</span>
     <span class="example-spacer"></span>
     <button mat-button routerLink="/home/procedures">Mis trámites</button>
     <button mat-button routerLink="/home/procedures/new">Nuevo trámite</button>
     <span class="example-spacer"></span>
-    <span>Ciudadano: 47398154</span>
+    <span>Ciudadano: {{dniCiudadano}}</span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon" matTooltip="Cerrar sesión" (click)="logout()">
         <mat-icon>logout</mat-icon>
     </button>
-</mat-toolbar>
+</mat-toolbar> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink='/home'>
+      <img  src="assets/img/escudo-muni.png" width="50" height="50" class="d-inline-block" alt="" />
+      Sistema de trámite virtual
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/procedures">Mis trámites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/procedures/new">Nuevo trámite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Ciudadano: {{dniCiudadano}}</a>
+        </li>
+        <li class="nav-item ">
+          <a mat-icon-button class="nav-link" matTooltip="Cerrar sesión" (click)="logout()">
+            Cerrar Sesión  
+              <mat-icon>logout</mat-icon> 
+          </a>
+        </li>
+      </ul>     
+    </div>
+  </div>
+</nav>

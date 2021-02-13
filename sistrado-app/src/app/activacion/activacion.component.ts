@@ -29,9 +29,9 @@ export class ActivacionComponent implements OnInit {
     this.authService.verificar(token)
     .subscribe(
       (account) => { 
-        this.alertService.showAlert('Mensaje', 'Su cuenta ha sido activada', () => {
-          this.router.navigate(['/login']);
-        });
+        // this.alertService.showAlert('Mensaje', 'Su cuenta ha sido activada', () => {
+        //   this.router.navigate(['/login']);
+        // });
       },
       (err) => {
         this.alertService.showAlert("Error", err.error.message ? err.error.message : 'Ocurrió un error intentar activar su cuenta');

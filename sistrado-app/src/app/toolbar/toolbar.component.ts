@@ -9,12 +9,18 @@ import { AuthService } from '../auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
+    dniCiudadano='47398154';
+
+    user: string;
+
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    // this.user=this.authService.getCurrentUser();
+    // console.log(this.user);
   }
 
   logout() {
