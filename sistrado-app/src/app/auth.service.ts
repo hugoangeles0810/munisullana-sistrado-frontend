@@ -8,23 +8,11 @@ import { Account } from './model/account';
 import { LoginRequest } from './model/request/login-request';
 import { environment } from 'src/environments/environment';
 import { RegistroRequest } from './model/request/registro-request';
-import { isNullOrUndefined } from 'util';
-import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // getCurrentUser(): string {
-  //     let user_string= localStorage.getItem('currentUser');
-  //     if(user_string===null){
-  //       let user: Account=JSON.parse(user_string);
-  //       return user.dni;
-  //     }else{
-  //       return null;
-  //     }
-  // }
-
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -53,6 +41,7 @@ export class AuthService {
   }
 
   private setSession(authResult) {
+    localStorage.setItem('dniCiudadano',authResult.dni);
     localStorage.setItem('token', authResult.token);
   }
 
@@ -68,7 +57,12 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getUser(){
+    return localStorage.getItem('dniCiudadano');
+  }
+
   logout() {
+    localStorage.removeItem('dniCiudadano');
     localStorage.removeItem('token');
   }
 
