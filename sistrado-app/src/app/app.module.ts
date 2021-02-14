@@ -17,6 +17,9 @@ import { ActivacionComponent } from './activacion/activacion.component';
 import { MyProceduresComponent } from './my-procedures/my-procedures.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NewProcedureComponent } from './new-procedure/new-procedure.component';
+import {CopyrightComponent} from './copyright/copyright.component';
+import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
+import {ResendConfirmationComponent} from './resend-confirmation/resend-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { NewProcedureComponent } from './new-procedure/new-procedure.component';
     ActivacionComponent,
     MyProceduresComponent,
     ToolbarComponent,
-    NewProcedureComponent
+    NewProcedureComponent,
+    CopyrightComponent,
+    RecoveryPasswordComponent,
+    ResendConfirmationComponent
   ],
   imports: [
     BrowserModule,

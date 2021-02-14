@@ -8,13 +8,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-
+    user: string;
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+     this.user=this.authService.getUser();
   }
 
   logout() {

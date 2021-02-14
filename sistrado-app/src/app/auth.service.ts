@@ -41,6 +41,7 @@ export class AuthService {
   }
 
   private setSession(authResult) {
+    localStorage.setItem('dniCiudadano',authResult.dni);
     localStorage.setItem('token', authResult.token);
   }
 
@@ -56,7 +57,12 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getUser(){
+    return localStorage.getItem('dniCiudadano');
+  }
+
   logout() {
+    localStorage.removeItem('dniCiudadano');
     localStorage.removeItem('token');
   }
 
