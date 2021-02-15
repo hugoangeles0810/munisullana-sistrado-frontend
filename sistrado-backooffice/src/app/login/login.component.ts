@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  authError$ = new BehaviorSubject<string>("");
+
+  isLoading$ = new BehaviorSubject<boolean>(false);
+
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    if (this.authService.isLoginIn()) {
+      this.router.navigate(['/home']);
+    }
   }
 
 }
