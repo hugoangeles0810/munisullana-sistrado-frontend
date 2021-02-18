@@ -4,7 +4,7 @@
 
     <h3 class="mt-2">Listado de Trámites</h3>
     <mat-divider></mat-divider>
-    <div class="example-table-container mt-3">
+    <div class="container mt-3">
 
         <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="created" matSortDisableClear
             matSortDirection="desc" *ngIf="data.length>=1">
@@ -55,9 +55,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        
+        <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="data.length" showFirstLastButtons></mat-paginator>
         <h5 class="mt-2" *ngIf="data.length==0">El ciudadano no cuenta con trámites registrados</h5>
     </div>
-
-    <mat-paginator [length]="data.length" [pageSize]="30"></mat-paginator>
 </div>
