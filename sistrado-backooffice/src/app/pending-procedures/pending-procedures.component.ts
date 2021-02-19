@@ -23,6 +23,10 @@ export class PendingProceduresComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadTramites();
+  }
+
+  private loadTramites() {
     this.procedureService.getPendingProcedures().subscribe(
       procedures => {
         console.log(procedures);
@@ -52,7 +56,16 @@ export class PendingProceduresComponent implements OnInit {
 
   openObservar() {
     this.modalService.open(ModalObservarComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      console.log(`Closed with: ${result}`);
+      if (result instanceof Object) {
+        this.procedureService.observarTramite({
+          tramiteId: this.detail.id,
+          observaciones: result.observaciones
+        }).subscribe(
+          result => { 
+            this.loadTramites() 
+          }
+        );
+      }
     }, (reason) => {
       console.log(`Dismissed`);
     });

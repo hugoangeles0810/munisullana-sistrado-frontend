@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { LoginRequest } from './model/request/login-request';
+import { LoginRequest } from './model/request/login.request';
 import { Account } from './model/account';
 
 @Injectable({

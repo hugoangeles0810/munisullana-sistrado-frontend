@@ -5,16 +5,20 @@
     </button>
 </div>
 <div class="modal-body">
-
-    <div class="row">
-        <div class="col-12">
-            <p>¿Estás seguro de observar el trámite?</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <p>Observaciones</p>
+                    <textarea type="text" id="observaciones" placeholder="Ingrese sus observaciones" [(ngModel)]="observaciones" ></textarea>
+                  </div>
+                
+            </div>
         </div>
-    </div>
+    
 
 
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('cancelar')">Cancelar</button>
-    <button type="button" class="btn btn-success" (click)="modal.close('observar')">Observar</button>
+    <button type="button" class="btn btn-danger" (click)="observar()">Observar</button>
 </div>

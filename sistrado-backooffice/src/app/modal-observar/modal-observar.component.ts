@@ -8,10 +8,18 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalObservarComponent implements OnInit {
 
+  observaciones: string = "";
+
   constructor(
     public modal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
 
+  observar() {
+    console.log("Observaciones: " + this.observaciones);
+    this.modal.close({
+      observaciones: this.observaciones
+    });
+  }
 }
