@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Observar trámite</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <p>Observaciones</p>
+                    <textarea type="text" id="observaciones" placeholder="Ingrese sus observaciones" [(ngModel)]="observaciones" ></textarea>
+                  </div>
+                
+            </div>
+        </div>
+    
+
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('cancelar')">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="observar()">Observar</button>
+</div>

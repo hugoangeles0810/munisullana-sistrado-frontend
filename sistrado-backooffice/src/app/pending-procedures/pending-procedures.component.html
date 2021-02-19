@@ -49,7 +49,7 @@
                                             <td>{{item.tipo}}</td>
                                             <td>{{item.fechaCreacion}}</td>
                                             <td>{{item.estado}}</td>
-                                            <td><a>Detalle</a></td>
+                                            <td><a (click)="open(content, item)">Detalle</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,3 +72,67 @@
 
 </div>
 <!-- End of Page Wrapper -->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Solicitud de trámite</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-12">
+                <span>Solicitud nro:</span>
+                <p>{{detail.numero}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <span>Nombre</span>
+                <p>{{detail.ciudadano}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <span>DNI</span>
+                <p></p>
+            </div>
+            <div class="col-6">
+                <span>Trámite</span>
+                <p>{{detail.tramite}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <span>Fecha creación</span>
+                <p>{{detail.fechaCreacion}}</p>
+            </div>
+            <div class="col-4">
+                <span>Fecha actualización</span>
+                <p>{{detail.fechaModificacion}}</p>
+            </div>
+            <div class="col-4">
+                <span>Estado de trámite</span>
+                <p>{{detail.estado}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <span>Requisitos adjuntos</span>
+                <ul *ngFor="let adjunto of detail.adjuntos">
+                    <li><a href="{{adjunto.adjunto}}" target="_blank">{{adjunto.nombre}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('observar')">Observar</button>
+      <button type="button" class="btn btn-success" (click)="modal.close('derivar')">Derivar</button>
+    </div>
+  </ng-template>
