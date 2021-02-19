@@ -1,0 +1,30 @@
+section {
+    display: table;
+  }
+  .example-button-row {
+    display: table-cell;
+    width: 500px;
+  }
+  
+  .example-grid-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    outline: none;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  

@@ -1,0 +1,25 @@
+<div mat-dialog-title class="example-button-row">
+    <div mat-dialog-actions class="example-flex-container">
+        <h6>{{data.title}}</h6>        
+        <button mat-icon-button cdkFocusInitial (click)="onOkClick()">
+            <mat-icon aria-hidden="false" aria-label="">close</mat-icon>
+        </button>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+    <mat-grid-list cols="4">
+        <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            <button class="example-grid-container" [style.background]="tile.color">
+                <mat-icon aria-hidden="false" aria-label="">description</mat-icon>
+                <h6>{{tile.name}}</h6>
+                <span>{{tile.description}}</span>
+            </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+</div>

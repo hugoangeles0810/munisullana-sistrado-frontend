@@ -20,6 +20,7 @@ import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 import {CopyrightComponent} from './copyright/copyright.component';
 import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
 import {ResendConfirmationComponent} from './resend-confirmation/resend-confirmation.component';
+import { AlertNewProcedureComponent } from './alert-new-procedure/alert-new-procedure.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ResendConfirmationComponent} from './resend-confirmation/resend-confirma
     NewProcedureComponent,
     CopyrightComponent,
     RecoveryPasswordComponent,
-    ResendConfirmationComponent
+    ResendConfirmationComponent,
+    AlertNewProcedureComponent
   ],
   imports: [
     BrowserModule,
