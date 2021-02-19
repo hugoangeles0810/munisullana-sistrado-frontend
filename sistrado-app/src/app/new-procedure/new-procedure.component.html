@@ -1,5 +1,24 @@
 <app-toolbar></app-toolbar>
 
 <div class="m-4">
-    <p>New procedure</p>
+    <p>Registro de Solicitud de Trámite</p>
 </div>
+<div class="container">
+    <mat-form-field>
+        <mat-label>Seleccionar un Trámite</mat-label>
+        <mat-select [(ngModel)]="procedure">
+          <mat-option *ngFor="let procedure of data" [value]="procedure">
+            {{procedure.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="procedure.length!=0"	>
+        <p> Descripción: {{procedure.descripcion}} </p>
+        <p> Indicaciones: {{procedure.indicaciones}} </p>
+        <div class="requisitos">
+          <input type="file">
+        </div>
+      </div>
+</div>
+
+  

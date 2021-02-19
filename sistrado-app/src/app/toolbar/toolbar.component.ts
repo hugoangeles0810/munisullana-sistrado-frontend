@@ -26,7 +26,6 @@ export class ToolbarComponent implements OnInit {
   }
   newProcedure(){
     this.alertService.showAlertNew('Solicitud de Trámite virtual (Seleccione una opción)','', () => {
-      // this.router.navigate(['/home/procedures/new']);
     });
   }
 }

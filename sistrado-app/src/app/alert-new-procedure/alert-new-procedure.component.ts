@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 export interface DialogData {
@@ -30,7 +32,8 @@ export class AlertNewProcedureComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AlertNewProcedureComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,private authService: AuthService,
+    private router: Router) {}
 
 
     ngOnInit(): void{}
@@ -39,6 +42,10 @@ export class AlertNewProcedureComponent implements OnInit {
       this.dialogRef.close();
     }
 
+    loadProcedure(){
+       this.router.navigate(['/home/procedures/new']);
+       this.dialogRef.close();
+    }
 
 
 

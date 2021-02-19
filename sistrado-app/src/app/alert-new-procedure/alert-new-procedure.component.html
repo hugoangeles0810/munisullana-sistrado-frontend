@@ -14,7 +14,7 @@
             [colspan]="tile.cols"
             [rowspan]="tile.rows"
             [style.background]="tile.color">
-            <button class="example-grid-container" [style.background]="tile.color">
+            <button class="example-grid-container" [style.background]="tile.color" (click)="loadProcedure()">
                 <mat-icon aria-hidden="false" aria-label="">description</mat-icon>
                 <h6>{{tile.name}}</h6>
                 <span>{{tile.description}}</span>
