@@ -63,7 +63,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sistrado-backooffice:build"
+            "browserTarget": "sistrado-backooffice:build",
+            "port": 4920
           },
           "configurations": {
             "production": {

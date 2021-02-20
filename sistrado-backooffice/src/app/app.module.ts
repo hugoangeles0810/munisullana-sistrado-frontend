@@ -16,6 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalObservarComponent } from './modal-observar/modal-observar.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { ReviewProceduresComponent } from './review-procedures/review-procedures.component';
+import { ApproveProceduresComponent } from './approve-procedures/approve-procedures.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LoadingInterceptor } from './loading.interceptor';
     FooterComponent,
     PendingProceduresComponent,
     ModalObservarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ReviewProceduresComponent,
+    ApproveProceduresComponent
   ],
   imports: [
     BrowserModule,

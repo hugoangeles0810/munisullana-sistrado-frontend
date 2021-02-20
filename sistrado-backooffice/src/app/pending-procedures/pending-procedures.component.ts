@@ -5,6 +5,7 @@ import { ProcedureService } from '../procedure.service';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProcedureDetail } from '../model/procedure-detail';
 import { ModalObservarComponent } from '../modal-observar/modal-observar.component';
+import { SolicitudEstado } from '../model/solicitud-estado';
 
 @Component({
   selector: 'app-pending-procedures',
@@ -27,7 +28,7 @@ export class PendingProceduresComponent implements OnInit {
   }
 
   private loadTramites() {
-    this.procedureService.getPendingProcedures().subscribe(
+    this.procedureService.getProceduresByState(SolicitudEstado.RECIBIDO).subscribe(
       procedures => {
         console.log(procedures);
         this.items = procedures;

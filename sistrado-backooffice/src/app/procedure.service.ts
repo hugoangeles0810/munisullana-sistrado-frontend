@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import {ProcedureItem } from 'src/app/model/procedure-item';
 import { ProcedureDetail } from './model/procedure-detail';
 import { ObservarTramiteRequest } from './model/request/observar-tramite.request';
+import { SolicitudEstado } from './model/solicitud-estado';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,12 @@ export class ProcedureService {
 
   constructor(private http: HttpClient) { }
 
-  getPendingProcedures(): Observable<Array<ProcedureItem>> {
-    return this.http.get<Array<ProcedureItem>>(`${environment.apiUrl}/backoffice/api/v1/solicitud`)
+  getProceduresByState(estado: SolicitudEstado): Observable<Array<ProcedureItem>> {
+    return this.http.get<Array<ProcedureItem>>(`${environment.apiUrl}/backoffice/api/v1/solicitud`, {
+      params: {
+        "estado": estado
+      }
+    })
       .pipe();
   }
 

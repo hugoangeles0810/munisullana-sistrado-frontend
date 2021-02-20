@@ -1,0 +1,7 @@
+export enum SolicitudEstado {
+    RECIBIDO = "RECIBIDO",
+    EN_TRAMITE = "EN_TRAMITE",
+    OBSERVADO = "OBSERVADO",
+    APROBADO = "APROBADO",
+    FINALIZADO = "FINALIZADO",
+}
