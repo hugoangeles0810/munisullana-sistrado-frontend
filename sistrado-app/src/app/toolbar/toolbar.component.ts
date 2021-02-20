@@ -22,10 +22,14 @@ export class ToolbarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
+    //this.router.navigate(['/login']);
   }
   newProcedure(){
     this.alertService.showAlertNew('Solicitud de Trámite virtual (Seleccione una opción)','', () => {
     });
+  }
+  myProcedure(){
+    this.router.navigate(['/home/procedures']);
   }
 }

@@ -1,0 +1,8 @@
+.card{
+    width: 100%!important;
+    min-height: 400px;
+    max-height: auto;
+  }
+  mat-form-field{
+    width: 50%!important; 
+  }

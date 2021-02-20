@@ -1,61 +1,119 @@
-<app-toolbar></app-toolbar>
-
-<div class="m-4">
-
-    <h3 class="mt-2">Listado de Trámites</h3>
-    <mat-divider></mat-divider>
-    <div class="container mt-3">
-
-        <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="created" matSortDisableClear
-            matSortDirection="desc" *ngIf="data.length>=1">
-
-            <!-- Ticket Column -->
-            <ng-container matColumnDef="ticket">
-                <th mat-header-cell *matHeaderCellDef>Numero de Ticket</th>
-                <td mat-cell *matCellDef="let row">{{row.numero}}</td>
-            </ng-container>
-
-            <!-- Ciudadano Column -->
-            <ng-container matColumnDef="ciudadano">
-                <th mat-header-cell *matHeaderCellDef>Ciudadano</th>
-                <td mat-cell *matCellDef="let row">{{row.ciudadano}}</td>
-            </ng-container>
-
-            <!-- Trámite Column -->
-            <ng-container matColumnDef="tramite">
-                <th mat-header-cell *matHeaderCellDef>Trámite</th>
-                <td mat-cell *matCellDef="let row">{{row.tramite}}</td>
-            </ng-container>
-
-            <!-- Tipo Column -->
-            <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef>Tipo</th>
-                <td mat-cell *matCellDef="let row">{{row.tipo}}</td>
-            </ng-container>
-
-            <!-- State Column -->
-            <ng-container matColumnDef="state">
-                <th mat-header-cell *matHeaderCellDef>State</th>
-                <td mat-cell *matCellDef="let row">{{row.estado}}</td>
-            </ng-container>
-
-            <!-- Created Column -->
-            <ng-container matColumnDef="created">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                    Fecha
-                </th>
-                <td mat-cell *matCellDef="let row">{{row.fechaCreacion | date}}</td>
-            </ng-container>
-            <!-- Actions Column -->
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
-                <td mat-cell *matCellDef="let row">{{row.actions}}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="data.length" showFirstLastButtons></mat-paginator>
-        <h5 class="mt-2" *ngIf="data.length==0">El ciudadano no cuenta con trámites registrados</h5>
+<div id="wrapper" >
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <app-toolbar></app-toolbar>
+            <div class="container mt-4">
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h1 class="h3 mb-0 text-gray-800">Listado de Trámites</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nro. Ticket</th>
+                                            <th>Ciudadano</th>
+                                            <th>Trámite</th>
+                                            <th>Tipo</th>
+                                            <th>Fecha</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of items" [ngSwitch]="item.estado">
+                                            <td>{{item.numero}}</td>
+                                            <td>{{item.ciudadano}}</td>
+                                            <td>{{item.tramite}}</td>
+                                            <td>{{item.tipo}}</td>
+                                            <td>{{item.fechaCreacion}}</td>
+                                            <td>
+                                                <span *ngSwitchCase="'RECIBIDO'" class="badge badge-primary">{{item.estado}}</span>
+                                                <span *ngSwitchCase="'EN_TRAMITE'" class="badge badge-info">{{item.estado}}</span>
+                                                <span *ngSwitchCase="'OBSERVADO'" class="badge badge-warning">{{item.estado}}</span>
+                                                <span *ngSwitchCase="'APROBADO'" class="badge badge-success">{{item.estado}}</span>
+                                                <span *ngSwitchCase="'FINALIZADO'" class="badge badge-secondary">{{item.estado}}</span>
+                                            </td>
+                                            <td>
+                                                <div class="example-button-row">
+                                                    <div class="example-flex-container">
+                                                        <a mat-icon-button title="Click para ver los detalles de su Trámite" (click)="open(content, item)">
+                                                            <mat-icon>visibility</mat-icon>
+                                                        </a>
+                                                        <a mat-icon-button title="Click para levantar las observaciones de su Trámite">
+                                                            <mat-icon>edit</mat-icon>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="items.length" showFirstLastButtons></mat-paginator>
+                                <h5 class="mt-2" *ngIf="items.length==0">El ciudadano no cuenta con trámites registrados</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <app-copyright></app-copyright>
     </div>
 </div>
+<!-- End of Page Wrapper -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Solicitud de trámite</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">Solicitud Nro:</div>
+                <div class="col-md-6">{{detail.numero}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Nombre:</div>
+                <div class="col-md-6">{{detail.ciudadano}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">DNI:</div>
+                <div class="col-md-6">{{detail.numero}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Trámite:</div>
+                <div class="col-md-6">{{detail.tramite}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Fecha creación:</div>
+                <div class="col-md-6">{{detail.fechaCreacion}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Fecha de actualización:</div>
+                <div class="col-md-6">{{detail.fechaModificacion}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">Estado de trámite:</div>
+                <div class="col-md-6">{{detail.estado}}</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h6>Requisitos adjuntos</h6>
+                <ul *ngFor="let adjunto of detail.adjuntos">
+                    <li><a href="{{adjunto.adjunto}}" target="_blank">{{adjunto.nombre}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="modal.close('imprimir')">imprimir</button>
+    </div>
+  </ng-template>

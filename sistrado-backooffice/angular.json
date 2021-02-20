@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "sistrado-backooffice"
+  "defaultProject": "sistrado-backooffice",
+  "cli": {
+    "analytics": false
+  }
 }

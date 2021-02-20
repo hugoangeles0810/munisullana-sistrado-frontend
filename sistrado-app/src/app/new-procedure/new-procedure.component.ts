@@ -27,6 +27,5 @@ export class NewProcedureComponent implements OnInit {
       this.data=resp;
     })
   }
-
-
+  
 }

@@ -21,6 +21,7 @@ import {CopyrightComponent} from './copyright/copyright.component';
 import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
 import {ResendConfirmationComponent} from './resend-confirmation/resend-confirmation.component';
 import { AlertNewProcedureComponent } from './alert-new-procedure/alert-new-procedure.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AlertNewProcedureComponent } from './alert-new-procedure/alert-new-proc
     ReactiveFormsModule,
     FlexLayoutModule,
     AngularMaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
