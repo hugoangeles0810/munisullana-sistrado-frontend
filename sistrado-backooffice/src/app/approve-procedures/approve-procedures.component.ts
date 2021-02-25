@@ -17,10 +17,11 @@ export class ApproveProceduresComponent implements OnInit {
   constructor(private procedureService: ProcedureService) { }
 
   ngOnInit(): void {
+    this.loadTramites();
   }
 
   private loadTramites() {
-    this.procedureService.getProceduresByState(SolicitudEstado.EN_TRAMITE).subscribe(
+    this.procedureService.getProceduresByState(SolicitudEstado.APROBADO).subscribe(
       procedures => {
         console.log(procedures);
         this.items = procedures;

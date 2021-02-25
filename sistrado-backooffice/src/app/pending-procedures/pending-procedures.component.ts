@@ -6,6 +6,7 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 import { ProcedureDetail } from '../model/procedure-detail';
 import { ModalObservarComponent } from '../modal-observar/modal-observar.component';
 import { SolicitudEstado } from '../model/solicitud-estado';
+import { ModalDeriveComponent } from '../modal-derive/modal-derive.component';
 
 @Component({
   selector: 'app-pending-procedures',
@@ -47,6 +48,8 @@ export class PendingProceduresComponent implements OnInit {
             console.log(`Closed with: ${result}`);
             if (result == 'observar') {
               this.openObservar();
+            } else if (result == 'derivar') {
+              this.openDerivar();
             }
           }, (reason) => {
             console.log(`Dismissed`);
@@ -61,6 +64,22 @@ export class PendingProceduresComponent implements OnInit {
         this.procedureService.observarTramite({
           tramiteId: this.detail.id,
           observaciones: result.observaciones
+        }).subscribe(
+          result => { 
+            this.loadTramites() 
+          }
+        );
+      }
+    }, (reason) => {
+      console.log(`Dismissed`);
+    });
+  }
+
+  openDerivar() {
+    this.modalService.open(ModalDeriveComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      if (result == 'derivar') {
+        this.procedureService.derivarTramite({
+          tramiteId: this.detail.id
         }).subscribe(
           result => { 
             this.loadTramites() 

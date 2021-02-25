@@ -18,6 +18,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { ReviewProceduresComponent } from './review-procedures/review-procedures.component';
 import { ApproveProceduresComponent } from './approve-procedures/approve-procedures.component';
+import { ModalDeriveComponent } from './modal-derive/modal-derive.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ApproveProceduresComponent } from './approve-procedures/approve-procedu
     ModalObservarComponent,
     LoaderComponent,
     ReviewProceduresComponent,
-    ApproveProceduresComponent
+    ApproveProceduresComponent,
+    ModalDeriveComponent
   ],
   imports: [
     BrowserModule,

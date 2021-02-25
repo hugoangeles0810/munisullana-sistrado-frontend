@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import {ProcedureItem } from 'src/app/model/procedure-item';
 import { ProcedureDetail } from './model/procedure-detail';
 import { ObservarTramiteRequest } from './model/request/observar-tramite.request';
+import { DerivarTramiteRequest } from './model/request/derivar-tramite.request';
 import { SolicitudEstado } from './model/solicitud-estado';
 
 @Injectable({
@@ -31,6 +32,11 @@ export class ProcedureService {
 
   observarTramite(request: ObservarTramiteRequest): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/backoffice/api/v1/solicitud/observar`, request)
+      .pipe();
+  }
+
+  derivarTramite(request: DerivarTramiteRequest): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/backoffice/api/v1/solicitud/derivar`, request)
       .pipe();
   }
 }

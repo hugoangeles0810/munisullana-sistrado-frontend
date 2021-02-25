@@ -21,7 +21,7 @@ export class ReviewProceduresComponent implements OnInit {
   }
 
   private loadTramites() {
-    this.procedureService.getProceduresByState(SolicitudEstado.APROBADO).subscribe(
+    this.procedureService.getProceduresByState(SolicitudEstado.EN_TRAMITE).subscribe(
       procedures => {
         console.log(procedures);
         this.items = procedures;
