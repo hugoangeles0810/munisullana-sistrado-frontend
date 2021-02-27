@@ -21,22 +21,36 @@
                 <div class="container-fluid">
                     <mat-form-field appearance="outline">
                       <mat-label>Seleccionar un Trámite</mat-label>
-                      <mat-select [(ngModel)]="procedure">
-                        <mat-option *ngFor="let procedure of data" [value]="procedure">
+                      <mat-select (selectionChange)="onProcedureChange($event.value)">
+                        <mat-option *ngFor="let procedure of procedures" [value]="procedure.id">
                           {{procedure.nombre}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                    <div class="form" *ngIf="procedure.length!=0">
-                      <div class="form-group">
-                        <label for="exdescription">Descripción:</label>
-                        <textarea class="form-control" id="exdescription" rows="2" placeholder="{{procedure.descripcion}}" readonly></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="exindicators">Indicaciones:</label>
-                        <textarea class="form-control" id="exindicators" rows="2" placeholder="{{procedure.indicaciones}}" readonly></textarea>
-                      </div> 
-                    </div>              
+                    <div *ngIf="tramiteSelected" >
+                      <form class="form" (submit)="registrarTramite()">
+                        <div class="form-group">
+                          <label for="exdescription">Descripción:</label>
+                          <textarea class="form-control" id="exdescription" rows="2" placeholder="{{tramiteSelected.descripcion}}" readonly></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exindicators">Indicaciones:</label>
+                          <textarea class="form-control" id="exindicators" rows="2" placeholder="{{tramiteSelected.indicaciones}}" readonly></textarea>
+                        </div> 
+                        <p>Requisitos</p>
+                        <div class="form-group" *ngFor="let requisito of tramiteSelected.requisitos">
+                          <label>{{requisito.nombre}}</label>
+                          <p>{{requisito.indicaciones}}</p>
+                          <input type="file" name="requisito{{requisito.id}}" (change)="subirArchivo(requisito, $event.target.files)" />
+                        </div>
+  
+                        <br>
+  
+                        <div class="form-group">
+                          <button type="submit" color="accent" class="btn-block">Enviar</button>
+                        </div>
+                      </form>     
+                    </div>   
                 </div>
               </div>
             </div>

@@ -16,6 +16,6 @@ export class UploadService {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.http
-      .post(`${environment.apiUrl}/webapp/api/v1/solicitud/adjunto/upload`, formData, { headers: { authorization: "Bearer " + this.authService.getToken() }}).pipe();
+      .post(`${environment.apiUrl}/webapp/api/v1/solicitud/adjunto/upload`, formData).pipe();
 }
 }
