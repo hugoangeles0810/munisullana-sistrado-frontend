@@ -1,1 +1,138 @@
-<p>approve-procedures works!</p>
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <app-sidebar></app-sidebar>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <app-toolbar></app-toolbar>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Aprobación de trámites</h1>
+                </div>
+
+                <!-- Content Row -->
+                <div class="row mt-4">
+                    
+                     <!-- DataTales Example -->
+                     <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listado de trámites</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nro Ticket</th>
+                                            <th>Ciudadano</th>
+                                            <th>Trámite</th>
+                                            <th>Tipo</th>
+                                            <th>Fecha</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of items">
+                                            <td>{{item.numero}}</td>
+                                            <td>{{item.ciudadano}}</td>
+                                            <td>{{item.tramite}}</td>
+                                            <td>{{item.tipo}}</td>
+                                            <td>{{item.fechaCreacion}}</td>
+                                            <td>{{item.estado}}</td>
+                                            <td><a class="pointer" (click)="open(content, item)">Detalle</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <app-footer></app-footer>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Solicitud de trámite</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-12">
+                <span>Solicitud nro:</span>
+                <p>{{detail.numero}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <span>Nombre</span>
+                <p>{{detail.ciudadano}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <span>DNI</span>
+                <p></p>
+            </div>
+            <div class="col-6">
+                <span>Trámite</span>
+                <p>{{detail.tramite}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <span>Fecha creación</span>
+                <p>{{detail.fechaCreacion}}</p>
+            </div>
+            <div class="col-4">
+                <span>Fecha actualización</span>
+                <p>{{detail.fechaModificacion}}</p>
+            </div>
+            <div class="col-4">
+                <span>Estado de trámite</span>
+                <p>{{detail.estado}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <span>Requisitos adjuntos</span>
+                <ul *ngFor="let adjunto of detail.adjuntos">
+                    <li><a href="{{adjunto.adjunto}}" target="_blank">{{adjunto.nombre}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('observar')">Observar</button>
+      <button type="button" class="btn btn-success" (click)="modal.close('derivar')">Aprobar</button>
+    </div>
+  </ng-template>

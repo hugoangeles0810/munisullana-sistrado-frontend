@@ -39,15 +39,20 @@
                         </div> 
                         <p>Requisitos</p>
                         <div class="form-group" *ngFor="let requisito of tramiteSelected.requisitos">
-                          <label>{{requisito.nombre}}</label>
-                          <p>{{requisito.indicaciones}}</p>
+                          <label>{{requisito.nombre}}</label> <br>
                           <input type="file" name="requisito{{requisito.id}}" (change)="subirArchivo(requisito, $event.target.files)" />
+                          <br>
+                          <p>{{requisito.indicaciones}}</p>
                         </div>
   
                         <br>
   
                         <div class="form-group">
-                          <button type="submit" color="accent" class="btn-block">Enviar</button>
+                          <div class="row">
+                            <div class="col3">
+                                <button mat-raised-button color="primary" type="submit" color="accent" class="btn-block">Enviar</button>
+                            </div>
+                          </div>
                         </div>
                       </form>     
                     </div>   

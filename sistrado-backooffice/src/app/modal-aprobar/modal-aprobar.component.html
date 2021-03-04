@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Aprobar trámite</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <p>Se aprobará el trámite</p>
+            </div>
+        </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('cancelar')">Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="modal.close('aprobar')">Aprobar</button>
+</div>
