@@ -29,4 +29,5 @@ steps:
     repository: 'sistrado-backoffice'
     command: 'buildAndPush'
     Dockerfile: $(working-dir)/Dockerfile
+    tags: 'latest'
   displayName: 'Build and push'

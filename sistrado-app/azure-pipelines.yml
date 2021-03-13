@@ -31,4 +31,5 @@ steps:
     repository: 'sistrado-app'
     command: 'buildAndPush'
     Dockerfile: $(working-dir)/Dockerfile
+    tags: 'latest'
   displayName: 'Build and push'
