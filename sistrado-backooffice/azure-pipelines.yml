@@ -23,24 +23,10 @@ pool:
 
 steps:
 
-- task: NodeTool@0
+- task: Docker@2
   inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
-  workingDirectory: $(working-dir)
-
-- task: CopyFiles@2
-  inputs:
-    contents: '$(working-dir)/dist/$(working-dir)/**'
-    targetFolder: '$(build.artifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    artifactName: 'app'
-    pathToPublish: '$(build.artifactStagingDirectory)'
+    containerRegistry: 'dockerRegistry'
+    repository: 'sistrado-backoffice'
+    command: 'buildAndPush'
+    Dockerfile: $(working-dir)/Dockerfile
+  displayName: 'Build and push'
