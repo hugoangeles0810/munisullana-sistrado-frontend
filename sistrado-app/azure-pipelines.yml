@@ -27,7 +27,8 @@ steps:
 
 - task: Docker@2
   inputs:
-    repository: $(imageName)
-    command: build
+    containerRegistry: 'dockerRegistry'
+    repository: 'sistrado'
+    command: 'buildAndPush'
     Dockerfile: $(working-dir)/Dockerfile
-  displayName: Build an image
+  displayName: 'Build and push'
