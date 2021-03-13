@@ -9,6 +9,7 @@ import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 import { RegistroComponent } from './registro/registro.component';
 import {RecoveryPasswordComponent} from './recovery-password/recovery-password.component';
 import {ResendConfirmationComponent} from './resend-confirmation/resend-confirmation.component';
+import { EditProcedureComponent } from './edit-procedure/edit-procedure.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home/procedures', component: MyProceduresComponent, canActivate: [AuthGuard] },
   { path: 'home/procedures/new', component: NewProcedureComponent, canActivate: [AuthGuard] },
+  { path: 'home/procedures/edit/:id', component: EditProcedureComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'verificar/:token', component: ActivacionComponent },

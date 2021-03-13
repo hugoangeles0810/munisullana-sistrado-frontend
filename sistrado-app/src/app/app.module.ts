@@ -25,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { LoadingInterceptor } from './loading.interceptor';
+import { EditProcedureComponent } from './edit-procedure/edit-procedure.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoadingInterceptor } from './loading.interceptor';
     RecoveryPasswordComponent,
     ResendConfirmationComponent,
     AlertNewProcedureComponent,
-    LoaderComponent
+    LoaderComponent,
+    EditProcedureComponent
   ],
   imports: [
     BrowserModule,

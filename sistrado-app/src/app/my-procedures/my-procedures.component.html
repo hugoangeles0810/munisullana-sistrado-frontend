@@ -36,7 +36,7 @@
                                                 <span *ngSwitchCase="'EN_TRAMITE'" class="badge badge-info">{{item.estado}}</span>
                                                 <span *ngSwitchCase="'OBSERVADO'" class="badge badge-warning">{{item.estado}}</span>
                                                 <span *ngSwitchCase="'APROBADO'" class="badge badge-success">{{item.estado}}</span>
-                                                <span *ngSwitchCase="'FINALIZADO'" class="badge badge-secondary">{{item.estado}}</span>
+                                                <span *ngSwitchCase="'REVISADO'" class="badge badge-secondary">{{item.estado}}</span>
                                             </td>
                                             <td>
                                                 <div class="example-button-row">
@@ -44,7 +44,7 @@
                                                         <a mat-icon-button title="Click para ver los detalles de su Trámite" (click)="open(content, item)">
                                                             <mat-icon>visibility</mat-icon>
                                                         </a>
-                                                        <a mat-icon-button title="Click para levantar las observaciones de su Trámite">
+                                                        <a mat-icon-button *ngIf="item.estado == 'OBSERVADO'" routerLink="/home/procedures/edit/{{item.id}}" title="Click para levantar las observaciones de su Trámite">
                                                             <mat-icon>edit</mat-icon>
                                                         </a>
                                                     </div>
@@ -76,34 +76,42 @@
     <div class="modal-body">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">Solicitud Nro:</div>
+                <div class="col-md-6 bold">Solicitud Nro:</div>
                 <div class="col-md-6">{{detail.numero}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">Nombre:</div>
+                <div class="col-md-6 bold">Nombre:</div>
                 <div class="col-md-6">{{detail.ciudadano}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">DNI:</div>
+                <div class="col-md-6 bold">DNI:</div>
                 <div class="col-md-6">{{detail.numero}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">Trámite:</div>
+                <div class="col-md-6 bold">Trámite:</div>
                 <div class="col-md-6">{{detail.tramite}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">Fecha creación:</div>
+                <div class="col-md-6 bold">Fecha creación:</div>
                 <div class="col-md-6">{{detail.fechaCreacion}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">Fecha de actualización:</div>
+                <div class="col-md-6 bold">Fecha de actualización:</div>
                 <div class="col-md-6">{{detail.fechaModificacion}}</div>
             </div>
             <div class="row">
-                <div class="col-md-6">Estado de trámite:</div>
+                <div class="col-md-6 bold">Estado de trámite:</div>
                 <div class="col-md-6">{{detail.estado}}</div>
             </div>
         </div>
+
+        <div *ngIf="detail.observaciones">
+            <br/>
+            <div class="col-md-12 bold">Observaciones:</div>
+            <div class="col-md-12">{{detail.observaciones}}</div>
+            <br/>
+        </div>
+
         <div class="row mt-2">
             <div class="col-12">
                 <h6>Requisitos adjuntos</h6>
