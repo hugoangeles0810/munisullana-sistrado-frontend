@@ -6,7 +6,7 @@
 
 variables:
   - name: working-dir
-    value: 'sistrado-backoffice/'
+    value: 'sistrado-backooffice/'
 
 trigger:
   branches:
@@ -16,7 +16,7 @@ trigger:
       - feat/*
   paths:
     include:
-      - 'sistrado-backoffice/*'
+      - 'sistrado-backooffice/*'
 
 pool:
   vmImage: 'ubuntu-latest'
